@@ -1,0 +1,195 @@
+/* ── Contact Wrapper ──────────────────────────────── */
+.contact-section {
+  padding-top: 80px;
+}
+
+/* ── CTA Banner ───────────────────────────────────── */
+.contact-cta-wrap {
+  padding-bottom: 80px;
+}
+
+.contact-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  background: linear-gradient(135deg, #180a30 0%, #08000a 100%);
+  border-radius: 24px;
+
+  padding: 80px 70px;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  width: var(--cWidth);
+  max-width: 1300px;
+  margin: 0 auto;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.7);
+  z-index: 1;
+}
+
+/* Animated Border Gradient */
+.contact-cta::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(transparent,
+      var(--accentColor),
+      transparent 50%);
+  animation: rotateBorder 4s linear infinite;
+  z-index: -2;
+}
+
+/* Inner Overlay to create border effect */
+.contact-cta::before {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  background: linear-gradient(135deg, #180a30 0%, #08050a 100%);
+  border-radius: 22px;
+  z-index: -1;
+  pointer-events: none;
+}
+
+@keyframes rotateBorder {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+.contact-cta-text h2 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 500;
+  margin: 0 0 16px 0;
+  color: #ffffff;
+  letter-spacing: -0.04em;
+  font-style: italic;
+  line-height: 1;
+  max-width: 600px;
+}
+
+.contact-cta-text p {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.contact-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(135deg, var(--accentColor) 0%, #a855f7 100%);
+  color: #000;
+  padding: 18px 44px;
+  border-radius: 100px;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(194, 164, 255, 0.2);
+}
+
+
+
+.contact-cta-btn svg {
+  transition: transform 0.2s;
+}
+
+.contact-cta-btn:hover {
+  background: linear-gradient(135deg,
+      var(--accentColor) 0%,
+      rgba(194, 164, 255, 0.8) 100%);
+  color: #000;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 40px rgba(194, 164, 255, 0.3);
+}
+
+.contact-cta-btn:hover svg {
+  transform: translate(2px, -2px);
+}
+
+/* ── Footer Bar ───────────────────────────────────── */
+.contact-footer {
+  border-top: 1px solid #1f1f1f;
+  padding: 22px 0;
+}
+
+.contact-footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  width: var(--cWidth);
+  max-width: 1540px;
+  margin: 0 auto;
+}
+
+.contact-footer-credit {
+  font-size: 13px;
+  color: #555;
+  margin: 0;
+}
+
+.contact-footer-credit span {
+  color: var(--accentColor, #34d399);
+  font-weight: 500;
+}
+
+/* ── Responsive ───────────────────────────────────── */
+@media only screen and (max-width: 900px) {
+  .contact-cta {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 36px 32px;
+    gap: 28px;
+  }
+
+  .contact-cta-text h2 {
+    font-size: 22px;
+  }
+
+  .contact-cta-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .contact-section {
+    padding-top: 50px;
+  }
+
+  .contact-cta-wrap {
+    padding-bottom: 50px;
+  }
+
+  .contact-cta {
+    padding: 28px 22px;
+  }
+
+  .contact-cta-text h2 {
+    font-size: 18px;
+  }
+
+  .contact-footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .contact-footer-links {
+    gap: 18px;
+  }
+}
