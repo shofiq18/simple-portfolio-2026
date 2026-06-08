@@ -1,31 +1,26 @@
+"use client";
 
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HoverLinks from "./HoverLinks";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
-import { ScrollSmoother } from "gsap/ScrollSmoother";
 import "./styles/Navbar.css";
 import { MdArrowOutward } from "react-icons/md";
 import { initialFX } from "./utils/initialFX";
 
-gsap.registerPlugin(ScrollSmoother, ScrollTrigger, useGSAP);
-export let smoother: ScrollSmoother;
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const Navbar = () => {
   useGSAP(() => {
-    smoother = ScrollSmoother.create({
-      wrapper: "#smooth-wrapper",
-      content: "#smooth-content",
-      smooth: 1.7,
-      speed: 1.7,
-      effects: true,
-      autoResize: true,
-      ignoreMobileResize: true,
-    });
-
-    smoother.scrollTop(0);
-    smoother.paused(true);
-    initialFX(smoother);
+    // Wait for Lenis to be initialized in window
+    const lenis = (window as any).lenis;
+    if (lenis) {
+      lenis.scrollTo(0, { immediate: true });
+      lenis.stop();
+      initialFX(lenis);
+    } else {
+      initialFX();
+    }
 
     setTimeout(() => {
       ScrollTrigger.refresh();
@@ -39,12 +34,14 @@ const Navbar = () => {
           e.preventDefault();
           let elem = e.currentTarget as HTMLAnchorElement;
           let section = elem.getAttribute("data-href");
-          smoother.scrollTo(section, true, "top top");
+          if (section) {
+            (window as any).lenis?.scrollTo(section, {
+              duration: 1.2,
+              easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            });
+          }
         }
       });
-    });
-    window.addEventListener("resize", () => {
-      ScrollSmoother.refresh(true);
     });
   }, []);
   return (

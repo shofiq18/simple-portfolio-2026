@@ -1,6 +1,18 @@
+"use client";
+
 import "./styles/Career.css";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { setAllTimeline } from "./utils/GsapScroll";
+
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const Career = () => {
+  useGSAP(() => {
+    setAllTimeline();
+  });
+
   return (
     <div id="career" className="career-section section-container">
       <div className="career-container">

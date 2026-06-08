@@ -1,3 +1,5 @@
+"use client";
+
 import "./styles/About.css";
 
 const DatabaseIcon = () => (
@@ -71,8 +73,8 @@ const About = () => {
           to architecting <span className="text-white">robust back-end systems</span> with{" "}
           <strong>Node.js, Express</strong>, and databases like <strong>PostgreSQL & MongoDB</strong> —
           I turn complex ideas into elegant, scalable digital products.
-          <i>Clean code, great UX, and continuous learning drive everything I do.</i>
         </p>
+        <i>Clean code, great UX, and continuous learning drive <br /> everything I do.</i>
       </div>
 
       <div className="about-highlights">

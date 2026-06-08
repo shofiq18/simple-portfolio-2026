@@ -1,3 +1,5 @@
+"use client";
+
 import "./styles/style.css";
 
 const HoverLinks = ({ text, cursor }: { text: string; cursor?: boolean }) => {

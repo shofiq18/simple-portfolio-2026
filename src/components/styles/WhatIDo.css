@@ -56,8 +56,8 @@
   position: relative;
   padding: 40px;
   box-sizing: border-box;
-  background: rgba(255, 255, 255, 0.015);
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   overflow: hidden;
@@ -66,11 +66,9 @@
 .what-noTouch:hover,
 .what-content-active {
   min-height: 80%;
-  background: linear-gradient(
-    135deg,
-    rgba(194, 164, 255, 0.06) 0%,
-    rgba(255, 255, 255, 0.01) 100%
-  );
+  background: linear-gradient(135deg,
+      rgba(194, 164, 255, 0.06) 0%,
+      rgba(255, 255, 255, 0.01) 100%);
   border-color: rgba(194, 164, 255, 0.3);
   box-shadow: 0 20px 50px -15px rgba(194, 164, 255, 0.15);
 }
@@ -177,8 +175,8 @@
   font-size: 0.7rem;
   font-weight: 500;
   padding: 0.35rem 0.75rem;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 6px;
   color: #eae5ec;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);

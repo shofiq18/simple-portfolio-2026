@@ -1,7 +1,9 @@
 /* ── Work Section ─────────────────────────────────── */
 .work-section {
-  min-height: 100vh;
-  margin-top: 100px;
+  min-height: 70vh;
+  width: var(--cWidth);
+  max-width: 1280px;
+  margin: 20px auto 0 auto;
   box-sizing: border-box;
   will-change: transform;
   overflow: hidden;
@@ -10,8 +12,16 @@
   position: relative;
 }
 
+@media only screen and (min-width: 1025px) {
+  .work-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
 .work-section h2 {
-  margin-top: 80px;
+  margin-top: 20px;
   margin-bottom: 40px;
   font-size: 70px;
   font-weight: 500;
@@ -27,7 +37,7 @@
 .work-stack {
   position: relative;
   width: var(--cWidth);
-  max-width: 1024px;
+  max-width: 1280px;
   margin: 0 auto;
   height: calc(100vh - 260px);
 }
@@ -79,7 +89,8 @@
   line-height: 0.8;
   flex-shrink: 0;
   opacity: 0.5;
-  font-family: serif; /* For a fency touch */
+  font-family: serif;
+  /* For a fency touch */
 }
 
 .work-card-meta {

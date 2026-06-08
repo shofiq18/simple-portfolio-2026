@@ -1,3 +1,5 @@
+"use client";
+
 import { MdArrowOutward } from "react-icons/md";
 import "./styles/Contact.css";
 

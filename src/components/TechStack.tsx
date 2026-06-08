@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -69,7 +71,7 @@ const NodejsLogo = () => (
 
 const ExpressLogo = () => (
   <svg viewBox="0 0 256 128" xmlns="http://www.w3.org/2000/svg">
-    <text x="50%" y="65%" dominantBaseline="middle" textAnchor="middle" fill="currentColor" fontSize="80" fontWeight="bold" fontFamily="Geist, sans-serif">ex</text>
+    <text x="50%" y="65%" dominantBaseline="middle" textAnchor="middle" fill="currentColor" fontSize="80" fontWeight="bold" fontFamily="'Roc Grotesk', 'Roc Grotesk wide', sans-serif">ex</text>
   </svg>
 );
 

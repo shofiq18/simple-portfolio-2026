@@ -1,9 +1,11 @@
+"use client";
+
 import "./styles/Landing.css";
 
 // Self-contained SVG icon for the "Welcome" badge
 const DotIcon = () => (
   <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="4" cy="4" r="4" fill="currentColor"/>
+    <circle cx="4" cy="4" r="4" fill="currentColor" />
   </svg>
 );
 
@@ -27,7 +29,7 @@ const CoderProfileCard = () => {
         <div className="code-window-border-left"></div>
         <div className="code-window-border-right"></div>
       </div>
-      
+
       {/* Window Header */}
       <div className="code-header">
         <div className="window-dots">
@@ -42,7 +44,7 @@ const CoderProfileCard = () => {
       <div className="code-body">
         <div className="code-body-blur1"></div>
         <div className="code-body-blur2"></div>
-        
+
         {/* Line Numbers */}
         <div className="line-numbers">
           {Array.from({ length: 11 }, (_, i) => (
@@ -111,7 +113,7 @@ const Landing = () => {
   return (
     <div className="landing-section" id="landingDiv">
       <div className="landing-container">
-        
+
         {/* Left Column: Text Content & Animation Loops */}
         <div className="landing-left">
           <div className="welcome-badge">
@@ -130,7 +132,10 @@ const Landing = () => {
 
           <div className="landing-info">
             <h3>A Passionate</h3>
-            <h1 className="full-stack-text">Full Stack Developer</h1>
+            <h2 className="landing-info-h2">
+              <span className="landing-h2-info-1">FULL STACK</span>
+              <span className="landing-h2-2">DEVELOPER</span>
+            </h2>
           </div>
 
           <div className="skill-badges-container">
@@ -144,8 +149,8 @@ const Landing = () => {
           </p>
 
           <div className="landing-buttons">
-            <button 
-              className="btn-primary" 
+            <button
+              className="btn-primary"
               onClick={() => {
                 const contactSection = document.getElementById("contact");
                 if (contactSection) {
@@ -155,8 +160,8 @@ const Landing = () => {
             >
               Contact Me
             </button>
-            <a 
-              href="mailto:shafiqulislam25021998@gmail.com" 
+            <a
+              href="mailto:shafiqulislam25021998@gmail.com"
               className="btn-secondary"
               style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
             >

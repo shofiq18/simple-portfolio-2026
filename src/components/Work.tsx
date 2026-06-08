@@ -1,3 +1,5 @@
+"use client";
+
 import "./styles/Work.css";
 import { useRef } from "react";
 import gsap from "gsap";
