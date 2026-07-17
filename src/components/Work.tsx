@@ -58,36 +58,40 @@ const Work = () => {
 
   useGSAP(
     () => {
-      const cards = cardsRef.current;
-      const total = cards.length;
-      const SCROLL_PER_CARD = 400;
+      const mm = gsap.matchMedia();
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: `+=${(total - 1) * SCROLL_PER_CARD}`,
-          scrub: 1,
-          pin: true,
-          pinSpacing: true,
-          id: "work-stack",
-          anticipatePin: 1,
-        },
-      });
+      mm.add("(min-width: 1025px)", () => {
+        const cards = cardsRef.current;
+        const total = cards.length;
+        const SCROLL_PER_CARD = 400;
 
-      cards.forEach((card, i) => {
-        if (i === 0) return;
-        tl.fromTo(
-          card,
-          { yPercent: 105 },
-          { yPercent: 0, ease: "none", duration: 1 },
-          i - 1,
-        );
-        tl.to(cards[i - 1], { scale: 0.96, ease: "none", duration: 1 }, i - 1);
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top top",
+            end: `+=${(total - 1) * SCROLL_PER_CARD}`,
+            scrub: 1,
+            pin: true,
+            pinSpacing: true,
+            id: "work-stack",
+            anticipatePin: 1,
+          },
+        });
+
+        cards.forEach((card, i) => {
+          if (i === 0) return;
+          tl.fromTo(
+            card,
+            { yPercent: 105 },
+            { yPercent: 0, ease: "none", duration: 1 },
+            i - 1,
+          );
+          tl.to(cards[i - 1], { scale: 0.96, ease: "none", duration: 1 }, i - 1);
+        });
       });
 
       return () => {
-        ScrollTrigger.getById("work-stack")?.kill();
+        mm.revert();
       };
     },
     { scope: sectionRef },
