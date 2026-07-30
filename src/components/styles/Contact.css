@@ -1,6 +1,7 @@
 /* ── Contact Wrapper ──────────────────────────────── */
 .contact-section {
-  padding-top: 80px;
+  margin-top: 0;
+  padding-top: 0;
 }
 
 /* ── CTA Banner ───────────────────────────────────── */

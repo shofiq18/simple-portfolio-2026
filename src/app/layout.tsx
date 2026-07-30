@@ -20,7 +20,10 @@ export default function RootLayout({
       className="h-full antialiased"
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-[#0b080c] text-[#eae5ec]">
+      <body
+        className="min-h-full flex flex-col bg-[#0b080c] text-[#eae5ec]"
+        suppressHydrationWarning
+      >
         <LoadingProvider>
           <SmoothScroll>
             {children}

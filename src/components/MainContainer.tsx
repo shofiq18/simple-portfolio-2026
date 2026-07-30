@@ -40,16 +40,28 @@ const MainContainer = () => {
         <div id="smooth-content">
           <div className="container-main">
             <Landing />
-            <About />
-            <WhatIDo />
-            <Career />
-            <Work />
+            <div className="mt-16 lg:mt-0">
+              <About />
+            </div>
+            <div className="mt-16 lg:mt-0">
+              <WhatIDo />
+            </div>
+            <div className="mt-16 lg:mt-0">
+              <Career />
+            </div>
+            <div className="mt-16">
+              <Work />
+            </div>
             {isDesktopView && (
               <Suspense fallback={<div>Loading....</div>}>
-                <TechStack />
+                <div className="mt-16">
+                  <TechStack />
+                </div>
               </Suspense>
             )}
-            <Contact />
+            <div className="mt-16">
+              <Contact />
+            </div>
           </div>
         </div>
       </div>
