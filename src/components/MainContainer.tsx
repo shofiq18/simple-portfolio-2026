@@ -1,6 +1,6 @@
 "use client";
 
-import { lazy, Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import About from "./About";
 import Career from "./Career";
 import Contact from "./Contact";
@@ -12,7 +12,7 @@ import WhatIDo from "./WhatIDo";
 import Work from "./Work";
 import setSplitText from "./utils/splitText";
 
-const TechStack = lazy(() => import("./TechStack"));
+import TechStack from "./TechStack";
 
 const MainContainer = () => {
   const [isDesktopView, setIsDesktopView] = useState<boolean>(
@@ -43,7 +43,7 @@ const MainContainer = () => {
             <div className="mt-16 lg:mt-0">
               <About />
             </div>
-            <div className="mt-16 lg:mt-0">
+            <div className="mt-6 lg:mt-0">
               <WhatIDo />
             </div>
             <div className="mt-16 lg:mt-0">
@@ -53,11 +53,9 @@ const MainContainer = () => {
               <Work />
             </div>
             {isDesktopView && (
-              <Suspense fallback={<div>Loading....</div>}>
-                <div className="mt-16">
-                  <TechStack />
-                </div>
-              </Suspense>
+              <div className="mt-16">
+                <TechStack />
+              </div>
             )}
             <div className="mt-16">
               <Contact />

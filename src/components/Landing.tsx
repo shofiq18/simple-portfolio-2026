@@ -111,7 +111,7 @@ const CoderProfileCard = () => {
 
 const Landing = () => {
   return (
-    <div className="landing-section" id="landingDiv">
+    <div className="landing-section" id="home">
       <div className="landing-container">
 
         {/* Left Column: Text Content & Animation Loops */}
@@ -145,7 +145,7 @@ const Landing = () => {
           </div>
 
           <p className="landing-description">
-            JavaScript enthusiast 🖋️ | Creating high-performance products ⚡ | Architecting scalable backend solutions and coding pixel-perfect frontends ✨
+            JavaScript enthusiast | Creating high-performance products | Architecting scalable backend solutions and coding pixel-perfect frontends
           </p>
 
           <div className="landing-buttons">
