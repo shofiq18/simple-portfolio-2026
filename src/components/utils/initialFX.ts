@@ -52,6 +52,9 @@ export function initialFX(smootherInstance?: any) {
       ease: "power3.out",
       y: 0,
       stagger: 0.02,
+      onComplete: () => {
+        infoText.revert();
+      },
     },
     "-=0.4"
   );

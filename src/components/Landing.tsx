@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import "./styles/Landing.css";
 
 // Self-contained SVG icon for the "Welcome" badge
@@ -110,6 +111,31 @@ const CoderProfileCard = () => {
 };
 
 const Landing = () => {
+  const [isSwapped, setIsSwapped] = useState(false);
+  const [animState, setAnimState] = useState<"idle" | "exit" | "enter">("idle");
+
+  useEffect(() => {
+    // Wait for initial entrance animation to complete before starting text swap loop
+    const initialTimeout = setTimeout(() => {
+      const interval = setInterval(() => {
+        setAnimState("exit");
+
+        setTimeout(() => {
+          setIsSwapped((prev) => !prev);
+          setAnimState("enter");
+
+          setTimeout(() => {
+            setAnimState("idle");
+          }, 700);
+        }, 550);
+      }, 4200);
+
+      return () => clearInterval(interval);
+    }, 2800);
+
+    return () => clearTimeout(initialTimeout);
+  }, []);
+
   return (
     <div className="landing-section" id="landingDiv">
       <div className="landing-container">
@@ -133,8 +159,28 @@ const Landing = () => {
           <div className="landing-info">
             <h3>A Passionate</h3>
             <h2 className="landing-info-h2">
-              <span className="landing-h2-info-1">FULL STACK</span>
-              <span className="landing-h2-2">DEVELOPER</span>
+              <span
+                className={`landing-h2-info-1 ${
+                  animState === "exit"
+                    ? "hero-text-exit-top"
+                    : animState === "enter"
+                    ? "hero-text-enter-top"
+                    : ""
+                }`}
+              >
+                {isSwapped ? "DEVELOPER" : "FULL STACK"}
+              </span>
+              <span
+                className={`landing-h2-2 ${
+                  animState === "exit"
+                    ? "hero-text-exit-bottom"
+                    : animState === "enter"
+                    ? "hero-text-enter-bottom"
+                    : ""
+                }`}
+              >
+                {isSwapped ? "FULL STACK" : "DEVELOPER"}
+              </span>
             </h2>
           </div>
 

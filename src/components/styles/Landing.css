@@ -204,14 +204,15 @@
 
 h2.landing-info-h2 {
   color: #c481ff;
-  font-size: 36px;
+  font-size: clamp(26px, 5.5vw, 36px);
   width: 100%;
   margin: 0;
   font-family: "Roc Grotesk", "Roc Grotesk wide", sans-serif;
   font-weight: 600;
   position: relative;
   display: block;
-  margin-bottom: 0.8em;
+  margin-bottom: 1.1em;
+  min-height: 1.5em;
 }
 
 .landing-h2-info-1 {
@@ -219,14 +220,69 @@ h2.landing-info-h2 {
   display: block;
   z-index: 1;
   color: #c481ff;
+  font-size: 1.16em;
+  white-space: nowrap;
+  transition: transform 0.55s cubic-bezier(0.25, 1, 0.4, 1), opacity 0.55s cubic-bezier(0.25, 1, 0.4, 1), filter 0.55s ease;
+  will-change: transform, opacity, filter;
 }
 
 .landing-h2-2 {
   position: absolute;
-  top: 0.65em;
+  top: 0.58em;
   left: 0;
   z-index: 4;
   color: #eae5ec;
+  font-size: 0.96em;
+  white-space: nowrap;
+  transition: transform 0.55s cubic-bezier(0.25, 1, 0.4, 1), opacity 0.55s cubic-bezier(0.25, 1, 0.4, 1), filter 0.55s ease;
+  will-change: transform, opacity, filter;
+}
+
+/* Hero text swap animation states */
+.hero-text-exit-top {
+  transform: translateY(-18px);
+  opacity: 0;
+  filter: blur(3px);
+}
+
+.hero-text-exit-bottom {
+  transform: translateY(18px);
+  opacity: 0;
+  filter: blur(3px);
+}
+
+.hero-text-enter-top {
+  animation: heroTextSlideInTop 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-text-enter-bottom {
+  animation: heroTextSlideInBottom 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes heroTextSlideInTop {
+  from {
+    transform: translateY(18px);
+    opacity: 0;
+    filter: blur(3px);
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
+
+@keyframes heroTextSlideInBottom {
+  from {
+    transform: translateY(-18px);
+    opacity: 0;
+    filter: blur(3px);
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+    filter: blur(0px);
+  }
 }
 
 .landing-info-h2::after {
@@ -552,7 +608,7 @@ h2.landing-info-h2 {
   }
 
   h2.landing-info-h2 {
-    font-size: 32px;
+    font-size: clamp(28px, 5.5vw, 36px);
   }
 }
 
@@ -576,7 +632,7 @@ h2.landing-info-h2 {
   }
 
   h2.landing-info-h2 {
-    font-size: 48px;
+    font-size: clamp(36px, 4.5vw, 48px);
   }
 }
 
@@ -615,6 +671,6 @@ h2.landing-info-h2 {
   }
 
   h2.landing-info-h2 {
-    font-size: 64px;
+    font-size: clamp(48px, 4vw, 64px);
   }
 }
