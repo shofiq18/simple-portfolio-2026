@@ -12,40 +12,40 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
 const projects = [
   {
     number: "01",
-    title: "TestyRide",
-    category: "Full-Stack Web App (Team)",
+    title: "NikXspace",
+    category: "Full-Stack E-Commerce Platform",
     year: "2024",
-    tech: ["React", "Node.js", "Express", "MongoDB", "Firebase", "Tanstack Query", "JWT"],
+    tech: ["Next.js", "Prisma", "MongoDB", "Express", "Node.js", "Tailwind CSS"],
     description:
-      "A comprehensive restaurant visualization and food delivery platform with city-wise grouping, role-based access, and an advanced admin/rider management workflow.",
+      "A comprehensive full-stack e-commerce shopping experience for fashion, watches, perfumes, and footwear, featuring a dynamic shopping cart, product filtering, and smooth checkouts.",
     color: "#7c3aed",
-    liveUrl: "https://testy-ride.web.app",
-    repoUrl: "https://github.com/shofiq18",
-    imageUrl: "/images/project-3.png",
-  },
-  {
-    number: "02",
-    title: "Piece Work",
-    category: "Full-Stack Task Management",
-    year: "2024",
-    tech: ["React", "Node.js", "Express", "MongoDB", "Firebase", "Stripe", "Tanstack Query"],
-    description:
-      "A robust freelance platform featuring user authentication, role-based dashboards, secure Stripe payment integration, and real-time task management systems.",
-    color: "#0f766e",
-    liveUrl: "https://piece-work-b72e6.web.app",
-    repoUrl: "https://github.com/shofiq18",
+    liveUrl: "https://farhad-365-frontend.vercel.app/",
+    repoUrl: "https://github.com/shofiq18/farhad-365-frontend",
     imageUrl: "/images/project-2.png",
   },
   {
-    number: "03",
-    title: "FoodBridge",
-    category: "Full-Stack Food Sharing",
+    number: "02",
+    title: "ZawajBD",
+    category: "Full-Stack Matrimony Platform",
     year: "2024",
+    tech: ["Next.js", "Prisma", "MongoDB", "Express", "Node.js", "Tailwind CSS"],
+    description:
+      "A secure, trusted full-stack matrimony and matchmaking platform with detailed profile discovery, robust verification, and advanced compatibility search features.",
+    color: "#0f766e",
+    liveUrl: "https://zawajbd.vercel.app/",
+    repoUrl: "https://github.com/shofiq18/ghotok-frontend",
+    imageUrl: "/images/project-3.png",
+  },
+  {
+    number: "03",
+    title: "GOFL",
+    category: "Full-Stack Online Football Game",
+    year: "2025",
     tech: ["React", "Node.js", "Express", "MongoDB", "Firebase", "JWT", "Tailwind CSS"],
     description:
-      "A social impact platform for food sharing, featuring interactive food request systems, secure authentication, and a dynamic responsive dashboard.",
+      "An engaging online multiplayer football gaming experience featuring real-time match dynamics, team selection, leaderboards, and live player statistics.",
     color: "#b45309",
-    liveUrl: "https://food-bridge-7ed3c.web.app",
+    liveUrl: "https://www.gofl.pro/",
     repoUrl: "https://github.com/shofiq18",
     imageUrl: "/images/project-1.png",
   },
@@ -80,10 +80,13 @@ const Work = () => {
 
         cards.forEach((card, i) => {
           if (i === 0) return;
+          // Set initial visibility to hidden for non-first cards
+          gsap.set(card, { autoAlpha: 0 });
+
           tl.fromTo(
             card,
-            { yPercent: 105 },
-            { yPercent: 0, ease: "none", duration: 1 },
+            { yPercent: 105, autoAlpha: 0 },
+            { yPercent: 0, autoAlpha: 1, ease: "none", duration: 1 },
             i - 1,
           );
           tl.to(cards[i - 1], { scale: 0.96, ease: "none", duration: 1 }, i - 1);
@@ -163,26 +166,10 @@ const Work = () => {
                 className="work-card-right"
                 style={{
                   background: project.imageUrl
-                    ? `url(${project.imageUrl}) center/cover no-repeat`
+                    ? `url(${project.imageUrl}) center/contain no-repeat`
                     : project.color,
                 }}
-              >
-                <div className="work-card-visual">
-                  <div className="work-visual-window">
-                    <div
-                      className="work-visual-screen"
-                      style={{
-                        background: project.imageUrl
-                          ? `url(${project.imageUrl}) center/cover no-repeat`
-                          : project.color,
-                      }}
-                    >
-                      {/* Placeholder for video or image */}
-
-                    </div>
-                  </div>
-                </div>
-              </div>
+              />
             </div>
           ))}
         </div>

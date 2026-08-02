@@ -9,9 +9,10 @@
   width: var(--cWidth);
   max-width: 1280px;
   margin: 0 auto;
-  padding: 4rem 0;
+  padding: 1.5rem 0 4rem 0;
   z-index: 9;
   box-sizing: border-box;
+  scroll-margin-top: 80px;
 }
 
 .what-box {
@@ -352,7 +353,7 @@
     align-items: center;
     height: 100vh;
     padding: 0;
-    scroll-margin-top: 120px;
+    scroll-margin-top: 80px;
   }
 
   .what-box:first-child {
