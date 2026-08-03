@@ -70,9 +70,21 @@ const Navbar = () => {
           </li>
         </ul>
         <a
-          href="mailto:shafiqulislam25021998@gmail.com"
+          href="#contact"
           className="navbar-btn"
           data-cursor="disable"
+          onClick={(e) => {
+            e.preventDefault();
+            const contactSection = document.getElementById("contact");
+            if (contactSection) {
+              const lenis = (window as any).lenis;
+              if (lenis) {
+                lenis.scrollTo(contactSection, { duration: 1.2 });
+              } else {
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }
+          }}
         >
           Contact Me <MdArrowOutward />
         </a>

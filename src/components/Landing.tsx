@@ -1,5 +1,7 @@
 "use client";
 
+import { useState, useEffect } from "react";
+import { TbNotes } from "react-icons/tb";
 import "./styles/Landing.css";
 
 // Self-contained SVG icon for the "Welcome" badge
@@ -14,6 +16,7 @@ const coderData = {
   name: 'Md Shofiqul Islam',
   role: 'Full Stack Developer',
   location: 'Bangladesh',
+  status: 'Open for Hire 🚀',
   skills: [
     'React', 'Next.js', 'JavaScript', 'TypeScript',
     'Node.js', 'Express', 'MongoDB', 'PostgreSQL',
@@ -21,8 +24,31 @@ const coderData = {
   ],
 };
 
-// The styled mock IDE code window component
+type CoderProperty = 'name' | 'role' | 'location' | 'skills' | 'status';
+
+// The styled interactive mock IDE code window component
 const CoderProfileCard = () => {
+  const [activeProperty, setActiveProperty] = useState<CoderProperty>('name');
+  const [inputValue, setInputValue] = useState('coder.name');
+
+  const handleSelectProperty = (prop: CoderProperty) => {
+    setActiveProperty(prop);
+    setInputValue(`coder.${prop}`);
+  };
+
+  const handleConsoleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const cleanInput = inputValue.trim().toLowerCase();
+    let prop: CoderProperty = 'name';
+    if (cleanInput.includes('role')) prop = 'role';
+    else if (cleanInput.includes('location') || cleanInput.includes('loc')) prop = 'location';
+    else if (cleanInput.includes('skill')) prop = 'skills';
+    else if (cleanInput.includes('status') || cleanInput.includes('hire')) prop = 'status';
+    else prop = 'name';
+
+    handleSelectProperty(prop);
+  };
+
   return (
     <div className="code-editor-window">
       <div className="code-window-border">
@@ -37,7 +63,7 @@ const CoderProfileCard = () => {
           <div className="dot dot-orange"></div>
           <div className="dot dot-green"></div>
         </div>
-        <div className="code-filename">profile.js</div>
+        <div className="code-filename">profile.js — Interactive REPL</div>
       </div>
 
       {/* Code Content Area */}
@@ -47,7 +73,7 @@ const CoderProfileCard = () => {
 
         {/* Line Numbers */}
         <div className="line-numbers">
-          {Array.from({ length: 11 }, (_, i) => (
+          {Array.from({ length: 12 }, (_, i) => (
             <div key={i} className="line-no">{i + 1}</div>
           ))}
         </div>
@@ -60,25 +86,60 @@ const CoderProfileCard = () => {
             <span className="code-operator">= </span>
             <span className="code-punctuation">{'{'}</span>
           </div>
-          <div className="indent-1">
+
+          <div
+            className={`indent-1 code-interactive-line ${activeProperty === 'name' ? 'line-active' : ''}`}
+            onClick={() => handleSelectProperty('name')}
+            title="Click to evaluate coder.name"
+          >
             <span className="code-property">name: </span>
             <span className="code-punctuation">&#39;</span>
             <span className="code-string">{coderData.name}</span>
             <span className="code-punctuation">&#39;,</span>
+            {activeProperty === 'name' && <span className="line-run-tag">▶ Evaluated</span>}
           </div>
-          <div className="indent-1">
+
+          <div
+            className={`indent-1 code-interactive-line ${activeProperty === 'role' ? 'line-active' : ''}`}
+            onClick={() => handleSelectProperty('role')}
+            title="Click to evaluate coder.role"
+          >
             <span className="code-property">role: </span>
             <span className="code-punctuation">&#39;</span>
             <span className="code-string">{coderData.role}</span>
             <span className="code-punctuation">&#39;,</span>
+            {activeProperty === 'role' && <span className="line-run-tag">▶ Evaluated</span>}
           </div>
-          <div className="indent-1">
+
+          <div
+            className={`indent-1 code-interactive-line ${activeProperty === 'location' ? 'line-active' : ''}`}
+            onClick={() => handleSelectProperty('location')}
+            title="Click to evaluate coder.location"
+          >
             <span className="code-property">location: </span>
             <span className="code-punctuation">&#39;</span>
             <span className="code-string">{coderData.location}</span>
             <span className="code-punctuation">&#39;,</span>
+            {activeProperty === 'location' && <span className="line-run-tag">▶ Evaluated</span>}
           </div>
-          <div className="indent-1">
+
+          <div
+            className={`indent-1 code-interactive-line ${activeProperty === 'status' ? 'line-active' : ''}`}
+            onClick={() => handleSelectProperty('status')}
+            title="Click to evaluate coder.status"
+          >
+            <span className="code-property">status: </span>
+            <span className="code-punctuation">&#39;</span>
+            <span className="code-string">{coderData.status}</span>
+            <span className="code-punctuation">&#39;,</span>
+            {activeProperty === 'status' && <span className="line-run-tag">▶ Evaluated</span>}
+          </div>
+
+          <div
+            className={`indent-1 code-interactive-line ${activeProperty === 'skills' ? 'line-active' : ''}`}
+            onClick={() => handleSelectProperty('skills')}
+            title="Click to evaluate coder.skills"
+          >
             <span className="code-property">skills: </span>
             <span className="code-punctuation">{'['}</span>
             <div className="indent-2 code-skills-list">
@@ -92,24 +153,106 @@ const CoderProfileCard = () => {
               ))}
             </div>
             <span className="code-punctuation">{' ]'}</span>
+            {activeProperty === 'skills' && <span className="line-run-tag">▶ Evaluated</span>}
           </div>
+
           <div>
             <span className="code-punctuation">{'};'}</span>
           </div>
         </div>
       </div>
 
+      {/* Terminal Console Output Panel */}
+      <div className="code-console-panel">
+        <div className="console-header">
+          <span className="console-title">
+            <span className="console-indicator">●</span> REPL OUTPUT CONSOLE
+          </span>
+          <div className="console-quick-pills">
+            {(['name', 'role', 'skills', 'location', 'status'] as CoderProperty[]).map((prop) => (
+              <button
+                key={prop}
+                className={`console-pill ${activeProperty === prop ? 'active' : ''}`}
+                onClick={() => handleSelectProperty(prop)}
+              >
+                coder.{prop}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="console-output-body">
+          <div className="console-output-row">
+            <span className="console-prompt">&gt; console.log(coder.{activeProperty});</span>
+          </div>
+          <div className="console-result-box">
+            {activeProperty === 'skills' ? (
+              <div className="result-skills-grid">
+                {coderData.skills.map((skill) => (
+                  <span key={skill} className="result-skill-chip">{skill}</span>
+                ))}
+              </div>
+            ) : (
+              <div className="result-text-glow">
+                <span className="result-quote">&quot;</span>
+                <span className="result-val">{coderData[activeProperty]}</span>
+                <span className="result-quote">&quot;</span>
+                <span className="result-badge">✓ Verified</span>
+              </div>
+            )}
+          </div>
+
+          {/* Interactive prompt input line */}
+          <form onSubmit={handleConsoleSubmit} className="console-input-form">
+            <span className="console-arrow">&gt;</span>
+            <input
+              type="text"
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              placeholder="Type coder.name & press Enter..."
+              className="console-input-field"
+            />
+            <button type="submit" className="console-run-btn">Run ↵</button>
+          </form>
+        </div>
+      </div>
+
       {/* Window Footer */}
       <div className="code-footer">
         <span>UTF-8</span>
-        <span>JavaScript</span>
-        <span>Ln 11, Col 2</span>
+        <span>JavaScript REPL</span>
+        <span>Ln 12, Col 2</span>
       </div>
     </div>
   );
 };
 
 const Landing = () => {
+  const [isSwapped, setIsSwapped] = useState(false);
+  const [animState, setAnimState] = useState<"idle" | "exit" | "enter">("idle");
+
+  useEffect(() => {
+    // Wait for initial entrance animation to complete before starting text swap loop
+    const initialTimeout = setTimeout(() => {
+      const interval = setInterval(() => {
+        setAnimState("exit");
+
+        setTimeout(() => {
+          setIsSwapped((prev) => !prev);
+          setAnimState("enter");
+
+          setTimeout(() => {
+            setAnimState("idle");
+          }, 700);
+        }, 550);
+      }, 4200);
+
+      return () => clearInterval(interval);
+    }, 2800);
+
+    return () => clearTimeout(initialTimeout);
+  }, []);
+
   return (
     <div className="landing-section" id="home">
       <div className="landing-container">
@@ -133,8 +276,26 @@ const Landing = () => {
           <div className="landing-info">
             <h3>A Passionate</h3>
             <h2 className="landing-info-h2">
-              <span className="landing-h2-info-1">FULL STACK</span>
-              <span className="landing-h2-2">DEVELOPER</span>
+              <span
+                className={`landing-h2-info-1 ${animState === "exit"
+                    ? "hero-text-exit-top"
+                    : animState === "enter"
+                      ? "hero-text-enter-top"
+                      : ""
+                  }`}
+              >
+                {isSwapped ? "DEVELOPER" : "FULL STACK"}
+              </span>
+              <span
+                className={`landing-h2-2 ${animState === "exit"
+                    ? "hero-text-exit-bottom"
+                    : animState === "enter"
+                      ? "hero-text-enter-bottom"
+                      : ""
+                  }`}
+              >
+                {isSwapped ? "FULL STACK" : "DEVELOPER"}
+              </span>
             </h2>
           </div>
 
@@ -149,21 +310,32 @@ const Landing = () => {
           </p>
 
           <div className="landing-buttons">
-            <button
+            <a
+              href="/asset/Resume of Md Shofiqul Islam-Frontend Developer (3).pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn-primary"
-              onClick={() => {
+              style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', textDecoration: 'none', gap: '8px' }}
+            >
+              <span>RESUME</span>
+              <TbNotes size={18} />
+            </a>
+            <a
+              href="#contact"
+              className="btn-secondary"
+              style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', textDecoration: 'none' }}
+              onClick={(e) => {
+                e.preventDefault();
                 const contactSection = document.getElementById("contact");
                 if (contactSection) {
-                  contactSection.scrollIntoView({ behavior: 'smooth' });
+                  const lenis = (window as any).lenis;
+                  if (lenis) {
+                    lenis.scrollTo(contactSection, { duration: 1.2 });
+                  } else {
+                    contactSection.scrollIntoView({ behavior: 'smooth' });
+                  }
                 }
               }}
-            >
-              Contact Me
-            </button>
-            <a
-              href="mailto:shafiqulislam25021998@gmail.com"
-              className="btn-secondary"
-              style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
             >
               Get In Touch
             </a>
