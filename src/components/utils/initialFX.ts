@@ -38,7 +38,7 @@ export function initialFX(smootherInstance?: any) {
   );
 
   // 2. Info stack section animation (starts slightly before the name finishes for smooth stagger)
-  const infoText = new SplitText([".landing-info h3", ".landing-info-line"], {
+  const infoText = new SplitText([".landing-info h3", ".landing-h2-info-1", ".landing-h2-2"], {
     type: "chars,lines",
     linesClass: "split-line",
   });
