@@ -34,7 +34,7 @@ const Career = () => {
               <h3>NOW</h3>
             </div>
             <p>
-              Advancing into Full Stack development with a focus on Node.js and PostgreSQL.
+              Advancing into Full Stack development with a focus on Next.js, Node.js, Express.js, PostgreSQL, MongoDB.
               Architecting scalable web solutions and building complex application
               features for diverse client requirements.
             </p>
@@ -56,14 +56,14 @@ const Career = () => {
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Complete Web Development</h4>
+                <h4>AI Driven Full Stack Web Engineer</h4>
                 <h5>Programming Hero (Batch-10)</h5>
               </div>
               <h3>2024</h3>
             </div>
             <p>
               Intensive training in modern web technologies including React, Next.js,
-              Node.js, and MongoDB. Delivered full-stack projects including TestyRide and piece of work platforms.
+              Node.js, and MongoDB,Express.js, PostgreSQL. Delivered full-stack projects including Pristto, ZawajBD, OrbitX Travel, GOFL Platform.
             </p>
           </div>
           <div className="career-info-box">

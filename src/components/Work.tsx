@@ -12,7 +12,7 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
 const projects = [
   {
     number: "01",
-    title: "NikXspace",
+    title: "Pristto",
     category: "Full-Stack E-Commerce Platform",
     year: "2024",
     tech: ["Next.js", "Prisma", "MongoDB", "Express", "Node.js", "Tailwind CSS"],
@@ -38,13 +38,26 @@ const projects = [
   },
   {
     number: "03",
+    title: "OrbitX Travel",
+    category: "Full-Stack Travel Management Platform",
+    year: "2025",
+    tech: ["Next.js", "Prisma", "PostgreSQL", "Express", "Node.js", "Tailwind CSS"],
+    description:
+      "A comprehensive full-stack travel management solution designed to streamline bookings, itinerary planning, and trip organization for travelers and travel agencies.",
+    color: "#97b413ff",
+    liveUrl: "https://orbitxtravel-frontend.vercel.app/",
+    repoUrl: "https://github.com/shofiq18",
+    imageUrl: "/images/project-4.png",
+  },
+  {
+    number: "04",
     title: "GOFL",
     category: "Full-Stack Online Football Game",
     year: "2025",
-    tech: ["React", "Node.js", "Express", "MongoDB", "Firebase", "JWT", "Tailwind CSS"],
+    tech: ["Next.js", "Node.js", "Express", "MongoDB", "Prisma", "JWT", "Tailwind CSS"],
     description:
       "An engaging online multiplayer football gaming experience featuring real-time match dynamics, team selection, leaderboards, and live player statistics.",
-    color: "#b45309",
+    color: "#a51010ff",
     liveUrl: "https://www.gofl.pro/",
     repoUrl: "https://github.com/shofiq18",
     imageUrl: "/images/project-1.png",
