@@ -24,31 +24,8 @@ const coderData = {
   ],
 };
 
-type CoderProperty = 'name' | 'role' | 'location' | 'skills' | 'status';
-
-// The styled interactive mock IDE code window component
+// The styled mock IDE code window component
 const CoderProfileCard = () => {
-  const [activeProperty, setActiveProperty] = useState<CoderProperty>('name');
-  const [inputValue, setInputValue] = useState('coder.name');
-
-  const handleSelectProperty = (prop: CoderProperty) => {
-    setActiveProperty(prop);
-    setInputValue(`coder.${prop}`);
-  };
-
-  const handleConsoleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const cleanInput = inputValue.trim().toLowerCase();
-    let prop: CoderProperty = 'name';
-    if (cleanInput.includes('role')) prop = 'role';
-    else if (cleanInput.includes('location') || cleanInput.includes('loc')) prop = 'location';
-    else if (cleanInput.includes('skill')) prop = 'skills';
-    else if (cleanInput.includes('status') || cleanInput.includes('hire')) prop = 'status';
-    else prop = 'name';
-
-    handleSelectProperty(prop);
-  };
-
   return (
     <div className="code-editor-window">
       <div className="code-window-border">
@@ -63,7 +40,7 @@ const CoderProfileCard = () => {
           <div className="dot dot-orange"></div>
           <div className="dot dot-green"></div>
         </div>
-        <div className="code-filename">profile.js — Interactive REPL</div>
+        <div className="code-filename">profile.ts</div>
       </div>
 
       {/* Code Content Area */}
@@ -74,11 +51,13 @@ const CoderProfileCard = () => {
         {/* Line Numbers */}
         <div className="line-numbers">
           {Array.from({ length: 12 }, (_, i) => (
-            <div key={i} className="line-no">{i + 1}</div>
+            <div key={i} className="line-no">
+              {i + 1}
+            </div>
           ))}
         </div>
 
-        {/* Code Snippet with custom syntax highlighting */}
+        {/* Code Snippet with syntax highlighting */}
         <div className="code-lines">
           <div>
             <span className="code-keyword">const </span>
@@ -87,73 +66,50 @@ const CoderProfileCard = () => {
             <span className="code-punctuation">{'{'}</span>
           </div>
 
-          <div
-            className={`indent-1 code-interactive-line ${activeProperty === 'name' ? 'line-active' : ''}`}
-            onClick={() => handleSelectProperty('name')}
-            title="Click to evaluate coder.name"
-          >
+          <div className="indent-1">
             <span className="code-property">name: </span>
             <span className="code-punctuation">&#39;</span>
             <span className="code-string">{coderData.name}</span>
             <span className="code-punctuation">&#39;,</span>
-            {activeProperty === 'name' && <span className="line-run-tag">▶ Evaluated</span>}
           </div>
 
-          <div
-            className={`indent-1 code-interactive-line ${activeProperty === 'role' ? 'line-active' : ''}`}
-            onClick={() => handleSelectProperty('role')}
-            title="Click to evaluate coder.role"
-          >
+          <div className="indent-1">
             <span className="code-property">role: </span>
             <span className="code-punctuation">&#39;</span>
             <span className="code-string">{coderData.role}</span>
             <span className="code-punctuation">&#39;,</span>
-            {activeProperty === 'role' && <span className="line-run-tag">▶ Evaluated</span>}
           </div>
 
-          <div
-            className={`indent-1 code-interactive-line ${activeProperty === 'location' ? 'line-active' : ''}`}
-            onClick={() => handleSelectProperty('location')}
-            title="Click to evaluate coder.location"
-          >
+          <div className="indent-1">
             <span className="code-property">location: </span>
             <span className="code-punctuation">&#39;</span>
             <span className="code-string">{coderData.location}</span>
             <span className="code-punctuation">&#39;,</span>
-            {activeProperty === 'location' && <span className="line-run-tag">▶ Evaluated</span>}
           </div>
 
-          <div
-            className={`indent-1 code-interactive-line ${activeProperty === 'status' ? 'line-active' : ''}`}
-            onClick={() => handleSelectProperty('status')}
-            title="Click to evaluate coder.status"
-          >
+          <div className="indent-1">
             <span className="code-property">status: </span>
             <span className="code-punctuation">&#39;</span>
             <span className="code-string">{coderData.status}</span>
             <span className="code-punctuation">&#39;,</span>
-            {activeProperty === 'status' && <span className="line-run-tag">▶ Evaluated</span>}
           </div>
 
-          <div
-            className={`indent-1 code-interactive-line ${activeProperty === 'skills' ? 'line-active' : ''}`}
-            onClick={() => handleSelectProperty('skills')}
-            title="Click to evaluate coder.skills"
-          >
+          <div className="indent-1">
             <span className="code-property">skills: </span>
             <span className="code-punctuation">{'['}</span>
             <div className="indent-2 code-skills-list">
               {coderData.skills.map((skill, index) => (
-                <span key={skill} style={{ marginRight: '4px' }}>
+                <span key={skill} style={{ marginRight: "4px" }}>
                   <span className="code-punctuation">&#39;</span>
                   <span className="code-skill">{skill}</span>
                   <span className="code-punctuation">&#39;</span>
-                  {index < coderData.skills.length - 1 && <span className="code-punctuation">,</span>}
+                  {index < coderData.skills.length - 1 && (
+                    <span className="code-punctuation">,</span>
+                  )}
                 </span>
               ))}
             </div>
             <span className="code-punctuation">{' ]'}</span>
-            {activeProperty === 'skills' && <span className="line-run-tag">▶ Evaluated</span>}
           </div>
 
           <div>
@@ -162,65 +118,10 @@ const CoderProfileCard = () => {
         </div>
       </div>
 
-      {/* Terminal Console Output Panel */}
-      <div className="code-console-panel">
-        <div className="console-header">
-          <span className="console-title">
-            <span className="console-indicator">●</span> REPL OUTPUT CONSOLE
-          </span>
-          <div className="console-quick-pills">
-            {(['name', 'role', 'skills', 'location', 'status'] as CoderProperty[]).map((prop) => (
-              <button
-                key={prop}
-                className={`console-pill ${activeProperty === prop ? 'active' : ''}`}
-                onClick={() => handleSelectProperty(prop)}
-              >
-                coder.{prop}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div className="console-output-body">
-          <div className="console-output-row">
-            <span className="console-prompt">&gt; console.log(coder.{activeProperty});</span>
-          </div>
-          <div className="console-result-box">
-            {activeProperty === 'skills' ? (
-              <div className="result-skills-grid">
-                {coderData.skills.map((skill) => (
-                  <span key={skill} className="result-skill-chip">{skill}</span>
-                ))}
-              </div>
-            ) : (
-              <div className="result-text-glow">
-                <span className="result-quote">&quot;</span>
-                <span className="result-val">{coderData[activeProperty]}</span>
-                <span className="result-quote">&quot;</span>
-                <span className="result-badge">✓ Verified</span>
-              </div>
-            )}
-          </div>
-
-          {/* Interactive prompt input line */}
-          <form onSubmit={handleConsoleSubmit} className="console-input-form">
-            <span className="console-arrow">&gt;</span>
-            <input
-              type="text"
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              placeholder="Type coder.name & press Enter..."
-              className="console-input-field"
-            />
-            <button type="submit" className="console-run-btn">Run ↵</button>
-          </form>
-        </div>
-      </div>
-
       {/* Window Footer */}
       <div className="code-footer">
         <span>UTF-8</span>
-        <span>JavaScript REPL</span>
+        <span>TypeScript</span>
         <span>Ln 12, Col 2</span>
       </div>
     </div>

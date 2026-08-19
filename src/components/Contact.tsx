@@ -2,7 +2,7 @@
 
 import { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
-import { MdArrowOutward, MdOutlineCheck } from "react-icons/md";
+import { MdArrowOutward, MdOutlineCheck, MdErrorOutline, MdClose } from "react-icons/md";
 import "./styles/Contact.css";
 
 const Contact = () => {
@@ -27,14 +27,19 @@ const Contact = () => {
     try {
       if (serviceId && templateId && publicKey && formRef.current) {
         await emailjs.sendForm(serviceId, templateId, formRef.current, publicKey);
+        setStatus("success");
+        setFormData({ from_name: "", from_email: "", message: "" });
+        setTimeout(() => setStatus("idle"), 6000);
       } else {
+        console.warn(
+          "EmailJS credentials missing. Please set NEXT_PUBLIC_EMAILJS_SERVICE_ID, NEXT_PUBLIC_EMAILJS_TEMPLATE_ID, and NEXT_PUBLIC_EMAILJS_PUBLIC_KEY in .env.local"
+        );
         // Fallback simulation delay for testing UI
         await new Promise((res) => setTimeout(res, 1000));
+        setStatus("success");
+        setFormData({ from_name: "", from_email: "", message: "" });
+        setTimeout(() => setStatus("idle"), 6000);
       }
-
-      setStatus("success");
-      setFormData({ from_name: "", from_email: "", message: "" });
-      setTimeout(() => setStatus("idle"), 6000);
     } catch (err: any) {
       console.error("EmailJS Error:", err);
       setStatus("error");
@@ -77,6 +82,10 @@ const Contact = () => {
         </div>
 
         <form ref={formRef} onSubmit={handleSubmit} className="contact-minimal-form">
+          <input type="hidden" name="reply_to" value={formData.from_email} />
+          <input type="hidden" name="to_name" value="Md Shofiqul Islam" />
+          <input type="hidden" name="name" value={formData.from_name} />
+          <input type="hidden" name="email" value={formData.from_email} />
           <div className="minimal-form-row">
             <div className="minimal-input-group">
               <label htmlFor="from_name">Name</label>
@@ -124,21 +133,36 @@ const Contact = () => {
               {status === "sending" ? "Sending..." : "Submit"}
             </button>
           </div>
-
-          {status === "success" && (
-            <div className="form-feedback success">
-              <MdOutlineCheck size={18} />
-              <span>Thank you! Your message has been sent successfully.</span>
-            </div>
-          )}
-
-          {status === "error" && (
-            <div className="form-feedback error">
-              <span>{errorMessage}</span>
-            </div>
-          )}
         </form>
       </div>
+
+      {/* ── Top-Right Toast Notification ── */}
+      {status !== "idle" && status !== "sending" && (
+        <div className={`toast-notification ${status}`} role="alert">
+          <div className="toast-icon">
+            {status === "success" ? (
+              <MdOutlineCheck size={20} />
+            ) : (
+              <MdErrorOutline size={20} />
+            )}
+          </div>
+          <div className="toast-content">
+            <span className="toast-message">
+              {status === "success"
+                ? "Thank you! Your message has been sent successfully."
+                : errorMessage || "Could not send message. Please try again."}
+            </span>
+          </div>
+          <button
+            type="button"
+            className="toast-close-btn"
+            onClick={() => setStatus("idle")}
+            aria-label="Close notification"
+          >
+            <MdClose size={18} />
+          </button>
+        </div>
+      )}
 
       {/* ── Footer Bar ── */}
       <footer className="contact-footer">

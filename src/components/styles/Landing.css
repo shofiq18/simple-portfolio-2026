@@ -491,8 +491,8 @@ h2.landing-info-h2 {
 
 .code-filename {
   font-family: monospace;
-  font-size: 11px;
-  color: #8b858f;
+  font-size: 12px;
+  color: #aea7b5;
   letter-spacing: 0.5px;
 }
 
@@ -790,13 +790,16 @@ h2.landing-info-h2 {
 }
 
 .code-footer {
-  padding: 10px 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.04);
-  background: rgba(0, 0, 0, 0.15);
+  padding: 10px 22px;
+  border-top: 1px solid rgba(194, 164, 255, 0.12);
+  background: rgba(13, 9, 20, 0.7);
   display: flex;
   justify-content: space-between;
-  font-size: 10px;
-  color: #58505e;
+  font-size: 12px;
+  font-family: monospace;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.75);
+  letter-spacing: 0.5px;
 }
 
 /* Media Queries */

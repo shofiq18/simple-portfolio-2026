@@ -19,7 +19,7 @@ const projects = [
     description:
       "A comprehensive full-stack e-commerce shopping experience for fashion, watches, perfumes, and footwear, featuring a dynamic shopping cart, product filtering, and smooth checkouts.",
     color: "#7c3aed",
-    liveUrl: "https://farhad-365-frontend.vercel.app/",
+    liveUrl: "https://pristto.vercel.app/",
     repoUrl: "https://github.com/shofiq18/farhad-365-frontend",
     imageUrl: "/images/project-2.png",
   },
@@ -45,7 +45,7 @@ const projects = [
     description:
       "A comprehensive full-stack travel management solution designed to streamline bookings, itinerary planning, and trip organization for travelers and travel agencies.",
     color: "#97b413ff",
-    liveUrl: "https://orbitxtravel-frontend.vercel.app/",
+    liveUrl: "https://orbitxtravel.vercel.app/",
     repoUrl: "https://github.com/shofiq18",
     imageUrl: "/images/project-4.png",
   },
