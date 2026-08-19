@@ -46,7 +46,7 @@ const projects = [
       "A comprehensive full-stack travel management solution designed to streamline bookings, itinerary planning, and trip organization for travelers and travel agencies.",
     color: "#97b413ff",
     liveUrl: "https://orbitxtravel.vercel.app/",
-    repoUrl: "https://github.com/shofiq18",
+    repoUrl: "https://github.com/shofiq18/orbitxtravel-frontend",
     imageUrl: "/images/project-4.png",
   },
   {
