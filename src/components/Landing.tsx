@@ -212,7 +212,7 @@ const Landing = () => {
 
           <div className="landing-buttons">
             <a
-              href="/asset/Resume of Md Shofiqul Islam-Frontend Developer (3).pdf"
+              href="/asset/Resume of  Shofiqul Islam-Full Stack Developer.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary"

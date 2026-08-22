@@ -11,7 +11,7 @@ import { TbNotes } from "react-icons/tb";
 import { useEffect } from "react";
 import HoverLinks from "./HoverLinks";
 
-const resume = "/asset/Resume of Md Shofiqul Islam-Frontend Developer (3).pdf";
+const resume = "/asset/Resume of Md Shofiqul Islam-Full Stack Developer (1).pdf";
 
 
 const SocialIcons = () => {
