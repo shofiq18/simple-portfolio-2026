@@ -14,7 +14,7 @@ const projects = [
     number: "01",
     title: "Pristto",
     category: "Full-Stack E-Commerce Platform",
-    year: "2024",
+    year: "2026",
     tech: ["Next.js", "Prisma", "MongoDB", "Express", "Node.js", "Tailwind CSS"],
     description:
       "A comprehensive full-stack e-commerce shopping experience for fashion, watches, perfumes, and footwear, featuring a dynamic shopping cart, product filtering, and smooth checkouts.",
@@ -27,7 +27,7 @@ const projects = [
     number: "02",
     title: "ZawajBD",
     category: "Full-Stack Matrimony Platform",
-    year: "2024",
+    year: "2026",
     tech: ["Next.js", "Prisma", "MongoDB", "Express", "Node.js", "Tailwind CSS"],
     description:
       "A secure, trusted full-stack matrimony and matchmaking platform with detailed profile discovery, robust verification, and advanced compatibility search features.",
@@ -40,7 +40,7 @@ const projects = [
     number: "03",
     title: "OrbitX Travel",
     category: "Full-Stack Travel Management Platform",
-    year: "2025",
+    year: "2026",
     tech: ["Next.js", "Prisma", "PostgreSQL", "Express", "Node.js", "Tailwind CSS"],
     description:
       "A comprehensive full-stack travel management solution designed to streamline bookings, itinerary planning, and trip organization for travelers and travel agencies.",
@@ -53,7 +53,7 @@ const projects = [
     number: "04",
     title: "GOFL",
     category: "Full-Stack Online Football Game",
-    year: "2025",
+    year: "2026",
     tech: ["Next.js", "Node.js", "Express", "MongoDB", "Prisma", "JWT", "Tailwind CSS"],
     description:
       "An engaging online multiplayer football gaming experience featuring real-time match dynamics, team selection, leaderboards, and live player statistics.",
