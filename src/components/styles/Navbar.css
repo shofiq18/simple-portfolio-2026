@@ -77,6 +77,12 @@
   transform: translate(2px, -2px);
 }
 
+.header.nav-hidden {
+  transform: translate(-50%, -180%);
+  opacity: 0;
+  pointer-events: none;
+}
+
 @media only screen and (max-width: 768px) {
   .header {
     padding: 6px 6px 6px 20px;
@@ -107,12 +113,16 @@
 
   .header {
     justify-content: center;
-    padding: 8px;
+    padding: 6px 12px;
+    width: auto;
+    max-width: 90%;
   }
 
   .navbar-btn {
     margin-left: 0;
-    width: 100%;
-    text-align: center;
+    width: auto;
+    padding: 8px 18px;
+    font-size: 13px;
+    justify-content: center;
   }
 }
