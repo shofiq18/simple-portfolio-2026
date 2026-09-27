@@ -20,7 +20,6 @@ const projects = [
       "A comprehensive full-stack e-commerce shopping experience for fashion, watches, perfumes, and footwear, featuring a dynamic shopping cart, product filtering, and smooth checkouts.",
     color: "#7c3aed",
     liveUrl: "https://pristto.vercel.app/",
-    repoUrl: "https://github.com/shofiq18/farhad-365-frontend",
     imageUrl: "/images/project-2.png",
   },
   {
@@ -33,7 +32,6 @@ const projects = [
       "A secure, trusted full-stack matrimony and matchmaking platform with detailed profile discovery, robust verification, and advanced compatibility search features.",
     color: "#0f766e",
     liveUrl: "https://zawajbd.vercel.app/",
-    repoUrl: "https://github.com/shofiq18/ghotok-frontend",
     imageUrl: "/images/project-3.png",
   },
   {
@@ -46,7 +44,6 @@ const projects = [
       "A comprehensive full-stack travel management solution designed to streamline bookings, itinerary planning, and trip organization for travelers and travel agencies.",
     color: "#97b413ff",
     liveUrl: "https://orbitxtravel.vercel.app/",
-    repoUrl: "https://github.com/shofiq18/orbitxtravel-frontend",
     imageUrl: "/images/project-4.png",
   },
   {
@@ -59,7 +56,6 @@ const projects = [
       "An engaging online multiplayer football gaming experience featuring real-time match dynamics, team selection, leaderboards, and live player statistics.",
     color: "#a51010ff",
     liveUrl: "https://www.gofl.pro/",
-    repoUrl: "https://github.com/shofiq18",
     imageUrl: "/images/project-1.png",
   },
 ];
@@ -161,15 +157,6 @@ const Work = () => {
                     data-cursor="disable"
                   >
                     Live Preview <MdArrowOutward />
-                  </a>
-                  <a
-                    href={project.repoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="work-btn work-btn-repo"
-                    data-cursor="disable"
-                  >
-                    GitHub Repo <MdArrowOutward />
                   </a>
                 </div>
               </div>
